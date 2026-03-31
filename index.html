@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Car Race Invitation</title>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,7 +13,7 @@
         }
 
         .card {
-            background-color: rgba(0,0,0,0.7);
+            background-color: rgba(0,0,0,0.8);
             padding: 30px;
             border-radius: 15px;
             display: inline-block;
@@ -21,11 +22,14 @@
 
         h1 {
             color: red;
-            font-size: 40px;
         }
 
-        p {
-            font-size: 18px;
+        input {
+            padding: 10px;
+            margin: 8px;
+            border-radius: 5px;
+            border: none;
+            width: 80%;
         }
 
         .btn {
@@ -35,13 +39,20 @@
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            margin-top: 15px;
         }
 
         .btn:hover {
             background: darkred;
         }
 
+        #formBox {
+            display: none; /* hidden initially */
+            margin-top: 15px;
+        }
+
+        #message {
+            color: lightgreen;
+        }
         img {
     width: 100%;
     height: 200px;
@@ -56,17 +67,43 @@
 
     <div class="card">
         <img src="https://cdn.pixabay.com/photo/2019/08/09/06/12/car-racing-4394450_1280.jpg" alt="Racing Image">
+
         <h1>🏎️ GRAND CAR RACE 2026</h1>
+
         <p>You are invited to the most thrilling car race event!</p>
 
-        <p><strong>📅 Date:</strong> April 20, 2026</p>
-        <p><strong>📍 Location:</strong> Bangalore Race Track</p>
-        <p><strong>⏰ Time:</strong> 5:00 PM</p>
+        <p>📅 Date: April 20, 2026</p>
+        <p>📍 Location: Bangalore Race Track</p>
+        <p>⏰ Time: 5:00 PM</p>
 
-        <p>Experience speed, power, and excitement like never before!</p>
+        <button class="btn" onclick="showForm()">Register Now</button>
 
-        <button class="btn">Register Now</button>
+        <div id="formBox">
+            <h3>Register</h3>
+
+            <form onsubmit="submitForm(event)">
+                <input type="text" placeholder="Enter your name" required><br>
+                <input type="email" placeholder="Enter your email" required><br>
+                <input type="tel" placeholder="Enter your phone" required><br>
+
+                <button class="btn" type="submit">Submit</button>
+            </form>
+        </div>
+
+        <p id="message"></p>
     </div>
+
+    <script>
+        function showForm() {
+            document.getElementById("formBox").style.display = "block";
+        }
+
+        function submitForm(event) {
+            event.preventDefault();
+            document.getElementById("message").innerHTML =
+                "✅ Registration Successful!";
+        }
+    </script>
 
 </body>
 </html>
